@@ -1,5 +1,5 @@
-#Javascript Basics
+# Javascript Basics
 
-##Variables and Operators
+## Variables and Operators
 
-###How to run Javascript code?
+### How to run Javascript code?
