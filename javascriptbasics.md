@@ -9,8 +9,9 @@
    - Save and open file in web browser
      - Right click on blank page and select "Inspect Element"
      - Select 'Console' tab to view output of our `console.log` statement
-
-
+     
+   HTML code:
+   
    ```
       <!DOCTYPE html>
    <html>
@@ -26,4 +27,6 @@
    </body>
    </html>
    ```
-2. 
+   
+2. Run via external script:
+   ```  <script src="javascript.js"></script> ```
