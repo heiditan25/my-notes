@@ -9,4 +9,21 @@
    - Save and open file in web browser
      - Right click on blank page and select "Inspect Element"
      - Select 'Console' tab to view output of our `console.log` statement
+
+
+   ```
+      <!DOCTYPE html>
+   <html>
+   <head>
+     <meta charset="UTF-8">
+     <title>Page Title</title>
+   </head>
+   <body>
+     <script>
+       // Your JavaScript goes here!
+       console.log("Hello, World!")
+     </script>
+   </body>
+   </html>
+   ```
 2. 
