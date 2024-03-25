@@ -223,3 +223,97 @@ Returns the length of a string
    ```
 
 #### Extracting String Characters
+There are 4 methods for extracting string characters:
+
+- The `at(position)` Method
+   - The at() method returns the character at a specified index (position) in a string
+   - Allows the use of negative indexes
+- The `charAt(position)` Method
+   - Returns the character at specified index, where 0 is the first character
+     
+     ```
+        let text = "HELLO WORLD";
+        let char = text.charAt(0);
+      ```
+   
+- The `charCodeAt(position)` Method
+   - Returns the UTF-16 unicode of the character at a given position in a string
+- Using property access `[]` like in arrays
+   - It makes strings look like arrays (but they are not)
+   - If no character is found, `[ ]` returns undefined, while charAt() returns an empty string
+   - It is read only: `str[0] = "A"` gives no error (but does not work!)
+
+#### Extracting String Parts
+There are 3 methods for extracting a part of a string:
+
+- `slice(start, end)`
+   - Extracts a part of string and returns extracted part in a new string
+     
+     ```
+     let text = "Apple, Banana, Kiwi";
+     let part = text.slice(7, 13); // returns Banana
+      ```
+   - If you omit the second parameter, the method will slice out the rest of the string:
+   - If a parameter is negative, the position is counted from the end of the string:
+- `substring(start, end)`
+   - Start and end values less than 0 are treated as 0 in substring()
+- `substr(start, length)`
+   - Second parameter specifies the **length** of the extracted part
+   - If you omit the second parameter, `substr()` will slice out the rest of the string
+   - If the first parameter is negative, the position counts from the end of the string
+ 
+     ```
+     let str = "Apple, Banana, Kiwi";
+     let part = str.substr(7, 6); // Returns Banana
+      ```
+#### Converting to Upper and Lower Case
+- A string is converted to upper case with `toUpperCase()`
+- A string is converted to lower case with `toLowerCase()`
+
+#### Javascript String concat
+`concat` joins two or more strings
+
+```
+let text1 = "Hello";
+let text2 = "World!";
+let text3 = text1.concat(" ",text2) // Returns "Hello World!"
+```
+
+#### Javascript String trim()
+This method removes whitespace from both sides of a string
+- `trimStart()` removes whitespace from start of a string
+- `trimEnd()` removes whitespace only from end of a string
+
+#### Javascript String Padding
+- The padStart() method pads a string from the start
+   - It pads a string with another string (multiple times) until it reaches a given length
+- The padEnd() method pads a string from the end
+  - It pads a string with another string (multiple times) until it reaches a given length
+- The padEnd() method is a **string method**: to pad a number, convert the number to a string first.
+
+
+#### Javascript String repeat()
+The `repeat()` method returns a string with a number of copies of a string
+- Returns a new string, does not change original string
+- Syntax: `string.repeat(count)`
+
+#### Replacing String Content
+The `replace()` method replaces a specified value with another value in a string:
+- Replaces only the first match and is case sensitive
+   - To replace all matches, use a **regular expression** with a `g/` flag
+
+     ```
+     let text = "Please visit Microsoft and Microsoft!";
+     let newText = text.replace(/Microsoft/g, "W3Schools");
+      ```
+      - Or use replaceAll()
+- To replace case insensitive, use **reular expression**(written without quotes) with an `/i` flag
+
+#### Converting a String to an Array
+
+- `split()` method
+   - `text.split(",")`    // Split on commas
+   - `text.split(" ")`    // Split on spaces
+   - `text.split("|")`    // Split on pipe
+- 
+
