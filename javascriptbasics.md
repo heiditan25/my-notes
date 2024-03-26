@@ -3,6 +3,8 @@
 ## Table of Contents
 - [Variables and Operators](javascriptbasics.md#variables-and-operators)
 - [Data Types and Conditionals](javascriptbasics.md#data-types-and-conditionals)
+- [Javascript Developer Tools](javascriptbasics.md#javascript-developer-tools)
+- [Function Basics](javascriptbasics.md#function-basics)
 
 # Variables and Operators
 
@@ -310,10 +312,234 @@ The `replace()` method replaces a specified value with another value in a string
 - To replace case insensitive, use **reular expression**(written without quotes) with an `/i` flag
 
 #### Converting a String to an Array
-
 - `split()` method
    - `text.split(",")`    // Split on commas
    - `text.split(" ")`    // Split on spaces
    - `text.split("|")`    // Split on pipe
-- 
 
+
+### Conditionals
+- Comparison operators
+  - Greater/less than: a > b, a < b
+  - Greater/less than or equals: a >= b, a <= b
+  - Equals: a == b, please note the double equality sign == means the equality test, while a single one a = b means an assignment
+  - Not equals: In maths the notation is ≠, but in JavaScript it’s written as a != b
+- Boolean is the result
+
+   ```
+   let result = 5 > 4; // assign the result of the comparison
+   alert( result ); // true
+   ```
+
+#### String Comparison
+-Strings are compared letter-by-letter in the “dictionary” order
+- If the first character from the first string is greater (or less) than the other string’s, then the first string is greater (or less) than the second, we’re done
+- Otherwise, if both strings’ first characters are the same, compare the second characters the same way
+- Repeat until the end of either string
+- If both strings end at the same length, then they are equal. Otherwise, the longer string is greater
+- When values of different types are compared, they get converted to numbers (with the exclusion of a strict equality check).
+
+#### Strict equality
+- A regular equality check `==` has a problem.
+   - It cannot differentiate 0 from false
+   - The same thing happens with an empty string
+- Strict equality operator `===` checks the equality without type conversion
+- The values null and undefined equal == each other and do not equal any other value
+- Be careful when using comparisons like > or < with variables that can occasionally be null/undefined. Checking for null/undefined separately is a good idea.
+
+### If, else, and else if
+- Use `if` to specify a block of code to be executed, if a specified condition is true
+  
+  ```
+  if (condition) {
+  //  block of code to be executed if the condition is true
+   }
+   ```
+
+- Use `else` to specify a block of code to be executed, if the same condition is false
+  
+  ```
+  if (condition) {
+  //  block of code to be executed if the condition is true
+   } else {
+  //  block of code to be executed if the condition is false
+   }
+   ```
+  
+- Use `else if` to specify a new condition to test, if the first condition is false
+
+  ```
+  if (condition1) {
+  //  block of code to be executed if condition1 is true
+   } else if (condition2) {
+  //  block of code to be executed if the condition1 is false and condition2 is true
+   } else {
+  //  block of code to be executed if the condition1 is false and condition2 is false
+   }
+  ```
+  
+- Use `switch` to specify many alternative blocks of code to be executed
+  - Take a single expression/value as an input, and then look through several choices until they find one that matches that value, executing the corresponding code that goes along with it
+  - choices must be the same type (string/number)
+  ```switch (expression) {
+     case choice1:
+    // run this code
+    break;
+
+     case choice2:
+    // run this code instead
+    break;
+
+     // include as many cases as you like
+
+     default:
+    // actually, just run this code
+    break;
+     }
+    ```
+
+
+### Logical Operators
+1. **||(OR):** If any of its arguments are true, it returns true, otherwise it returns false
+   - Evaluates from let to right
+   - For each operand, converts it to boolean
+   - If result is `true`, stops and returns the original value of the operand
+   - If all `false`, returns the last operand
+2. **&&(AND):** Returns true if both are `true`, otherwise `false`
+   - Finds the first falsy value
+   - Evaluates left to right
+   - Converts all operands to boolean. If result is `false`, stops and returns original value of that operand
+   - If all truthy, returns the last operand
+3. **!(NOT):** The boolean NOT operator
+   - Converts operand to boolean type: `true/false`
+   - Returns the inverse value
+   - Highest precendence
+4. **??(Nullish Coalescing):**
+
+
+
+### Javascript Methods to Know
+- `document.querySelector`: This is a method provided by JavaScript that allows you to search the HTML document for elements based on a CSS selector.  Think of it like a search function looking for specific elements in your webpage.
+- `.addEventListener([type of event],[function])`: This method is used to attach an event listener to the selected element. An event listener is a piece of code that waits for a specific event (action) to occur on that element.
+
+
+### Ternary Operator (?)
+Tests a condition and returns one value/expression if it is `true`, and another if it is `false`
+
+Psuedocode:
+
+```
+condition ? run this code : run this code instead
+```
+
+Example
+
+```
+const greeting = isBirthday
+  ? "Happy birthday Mrs. Smith — we hope you have a great day!"
+  : "Good morning Mrs. Smith.";
+```
+
+If multiple `?`
+
+```
+condition1 ? value_if_true1 : (condition2 ? value_if_true2 : value_if_false2)
+```
+
+
+## Javascript Developer Tools 
+
+### Opening DevTools
+1. From the `Chrome Menu` > `More Tools` > `Developer Tools`
+2. Right-click anywhere on a webpage and select `Inspect`
+3. Use the keyboard shortcut `F12` or `Ctrl` + `Shift` + `C` (Mac: `Opt` + `Cmd` + `C`)
+
+## Function Basics
+- **Parameters** are items listed between the `()` in the function declaration
+- **Function arguments** are actual values passed in function
+
+   ```
+   function sum(param1, param2) {
+      return param1 + param2;
+   }
+
+   sum(1,2);
+   ```
+
+### Build-In Browser Functions
+- Everytime a text string or array is manipulated
+   - Examples: `[myText].replace` (replaces a string), `[myArray].join` (joins an array to a string), `Math.random` (generates a random number)
+- `Math.random()`: generates a decimal number between 0 and 1
+   - If you want a whole number, multiple function by number
+ 
+### Function vs Methods
+- Functions that are part of objects are called methods
+
+
+### Invoking functions
+```
+function myFunction() {
+  alert("hello");
+}
+
+myFunction();
+// calls the function once
+```
+
+### Function parameters
+Some functions require parameters to be specified when you are invoking them — these are values that need to be included inside the function parentheses, which it needs to do its job properly
+
+**Default parameters:** If you're writing a function and want to support optional parameters, you can specify default values by adding = after the name of the parameter, followed by the default value:
+
+```
+function hello(name = "Chris") {
+  console.log(`Hello ${name}!`);
+}
+
+hello("Ari"); // Hello Ari!
+hello(); // Hello Chris!
+```
+
+### Anonymous functions and arrow functions
+
+**Anonymous functions:** No name function, often seen when a function expects to recieve another function as a parameter
+
+```
+(function () {
+  alert("hello");
+});
+```
+
+Example: Instead of defining a separate `logKey()` function, you can pass an anonymous function
+
+```
+textBox.addEventListener("keydown", function (event) {
+  console.log(`You pressed "${event.key}".`);
+});
+```
+
+**Arrow functions:** Instead of `function(event)`, you write `(event) =>`
+
+If the function only takes one parameter, you can omit the parentheses around the parameter:
+
+```
+textBox.addEventListener("keydown", event => {
+  console.log(`You pressed "${event.key}".`);
+});
+```
+
+### Function Scope and Conflicts
+
+Variables and other things defined inside function are their own separate **scope**.
+
+**Global scope:** outisde of all functions, are accessible from everywhere in the code
+
+Scope:
+- When you define a variable inside a function, it's only accessible within that function and any nested functions within it. These variables are not accessible from outside the function's scope
+- JavaScript uses lexical scoping, which means the accessibility of a variable is determined by its location in the code, not by the order of execution
+
+Conflicts:
+- Conflicts can arise when you have variables with the same name in different scopes. JavaScript prioritizes local scope over global scope
+- If you define a variable with the same name inside a function and outside the function, the variable within the function takes precedence. The outer variable is hidden within the function's scope
+
+  
