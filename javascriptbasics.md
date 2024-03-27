@@ -5,6 +5,7 @@
 - [Data Types and Conditionals](javascriptbasics.md#data-types-and-conditionals)
 - [Javascript Developer Tools](javascriptbasics.md#javascript-developer-tools)
 - [Function Basics](javascriptbasics.md#function-basics)
+- [Functions Basics](javascriptbasics.md#function-basics)
 
 # Variables and Operators
 
@@ -489,7 +490,7 @@ myFunction();
 ### Function parameters
 Some functions require parameters to be specified when you are invoking them — these are values that need to be included inside the function parentheses, which it needs to do its job properly
 
-**Default parameters:** If you're writing a function and want to support optional parameters, you can specify default values by adding = after the name of the parameter, followed by the default value:
+**Default parameters:** If you're writing a function and want to support optional parameters, you can specify default values by adding `=` after the name of the parameter, followed by the default value:
 
 ```
 function hello(name = "Chris") {
@@ -537,9 +538,107 @@ Variables and other things defined inside function are their own separate **scop
 Scope:
 - When you define a variable inside a function, it's only accessible within that function and any nested functions within it. These variables are not accessible from outside the function's scope
 - JavaScript uses lexical scoping, which means the accessibility of a variable is determined by its location in the code, not by the order of execution
+- **Local variable:** Declared inside function and only visible in that function
 
 Conflicts:
-- Conflicts can arise when you have variables with the same name in different scopes. JavaScript prioritizes local scope over global scope
-- If you define a variable with the same name inside a function and outside the function, the variable within the function takes precedence. The outer variable is hidden within the function's scope
+- Conflicts can arise when you have variables with the same name in different scopes. JavaScript prioritizes **local scope** over global scope
+- If you define a variable with the same name inside a function and outside the function, *the variable within the function takes precedence*. The outer variable is hidden within the function's scope
+- **Outer variable:** Function has full access to outer variables
 
+### Function Return Values
+
+**Return Values:** Values that a function returns when it completes
+- Typically used where the function is an intermediate step in a calculation and is stored in a variable
+- A function with an empty `return` or without it returns `undefined`
+
+Example: 
+This function takes one parameter (a whole number) and returns a random whole number between `0` and that number
+
+```
+function random(number) {
+  return Math.floor(Math.random() * number);
+}
+```
+- `Math.random()`: this method generates a random floating-point number between 0 and 1
+- `* number`: multiplies the decimal value between 0 - 1 by the `number` argument provided when calling the function (scales the random value to fall within range 0 - 
+  `number`
+- `Math.floor()`: this method rounds the result of the multiplication down to nearest whole number (integer)
+
+#### Adding functionality to an HTML input element
+
+```
+input.addEventListener("change", () => {
+  const num = parseFloat(input.value);
+  if (isNaN(num)) {
+    para.textContent = "You need to enter a number!";
+  } else {
+    para.textContent = `${num} squared is ${squared(num)}. `;
+    para.textContent += `${num} cubed is ${cubed(num)}. `;
+    para.textContent += `${num} factorial is ${factorial(num)}. `;
+  }
+});
+```
+
+1. Event listener on Input
+
+`input.addEventListener("change", () => { ... })`
+
+- `input`: This refers to an HTML input element on your webpage, likely a text field where users can enter a number
+- `.addEventListener("change", ...)`: This part attaches an event listener to the `input` element
+   - An event listener is a piece of code that waits for a specific event (action) to occur on that element. In this case, `"change"` specifies that the code within the curly braces {} will be executed whenever the value entered by the user in the input field **changes**
+
+2. Capturing User Input
+Inside the curly braces {} of the event listener, we have:
+- `const num = parseFloat(input.value);`
+   - This line retrieves the value that the user entered into the input field and stores it in a variable named num
+   - `parseFloat(input.value):` This part attempts to convert the user's input from a string to a floating-point number (decimal number)
+
+3. Validating User Input
+`if (isNaN(num)) { ... } else { ... }`
+
+- This is an if-else statement used to check if the user entered a valid number.
+- `isNaN(num)`: This expression checks if num is Not a Number (NaN)
+   - If the user entered a text value or something other than a number, parseFloat would return NaN
+      - If `isNaN(num)` is true (user entered something invalid), the code within the  first curly braces {...} following the if statement will be executed
+      - If `isNaN(num)` is false (user entered a valid number), the code within the curly braces {...} following the else statement will be executed
+    
+4. Processing Valid Input
+
+Assuming valid number was entered:
+
+- `para.textContent = ...`
+   - These lines update the content of an element referenced by the variable `para`. This is likely a paragraph (<p>) element on your webpage where results will be displayed to the user.
+   - The text content is updated with a template literal string. Template literals allow you to embed expressions within a string using backticks `()`.
+   - Inside the template literal, the code calculates the square, cube, and factorial of the entered number using functions presumably defined elsewhere in your code (e.g., `squared(num)`, `cubed(num)`, `factorial(num)`) and displays the results.
+
+### Naming a Function
+Functions are actions, so names are usually a **verb**.
+- One function should do one action, no more
+- A function is a value and can be copied to another variable
   
+Examples:
+- `"get…"` – return a value,
+- `"calc…"` – calculate something,
+- `"create…"` – create something,
+- `"check…"` – check something and return a boolean, etc.
+
+#### Function Declarations vs Expressions
+- **Declaration:** defined using the `function keyword followed by a function name, parentheses for arguments, and curly braces for the function body
+   - Has a unique name
+   - Hoisted to the top of their scope (script or function scope): you can call a function before it's declared in the code
+
+   ```
+   sayHi("Alice"); // This works because function declarations are hoisted
+   
+   function sayHi(name) {
+     console.log("Hello,", name);
+   }
+   ```
+- **Expressions:** definded as an assignment to a variable using `let`, `const`, or `var`followed by an anonymous function (no name) within the parenthese and curly braces for the function body
+   - No formal name, assigned to a variable which can be used to call the function
+   - Not hoisted, cannot call a function expression before its defined in the code
+### Callback Functions
+
+
+
+
