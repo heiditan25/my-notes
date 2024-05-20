@@ -638,6 +638,31 @@ Examples:
    - No formal name, assigned to a variable which can be used to call the function
    - Not hoisted, cannot call a function expression before its defined in the code
 ### Callback Functions
+- It is a function that is passed as an arguement to another function
+  - Allows the called function to execute the callback function at some point in its execution
+
+    ```
+    function greet(name, callback) {
+        console.log("Hello, " + name + "!");
+        callback(); // Call the callback function here (synchronously)
+    }
+      
+    function sayHi() {
+        console.log("Hi there!");
+    }
+
+    greet("Alice", sayHi); // Pass the sayHi function as a callback
+
+   ```
+
+### Function Expression and Function Declaration
+- **Function Declaration**: A function, declared as a aseparate statement
+   - Can be called earlier than defined because when scrpt is run, it looks for global function declarations in it and creates the functions first
+- **Function Expresstion**: A function, created inside an expresssion or inside another syntax construct (ex. uses let)
+  - Created when the execution reaches it and is usable from that moment
+
+### Arrow Functions
+
 
 
 
